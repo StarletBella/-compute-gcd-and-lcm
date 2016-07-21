@@ -1,0 +1,47 @@
+//Write a program to compute gcd(a,b) and lcm(a,b) for each of the following numbers.
+//648 and 972
+//5005 and 2587
+//The first four digits of your X number and the last digits of my X number.
+// A program to find the greatest common divisor and the least common multiple of two numbers 
+// Uses file output instead of console 
+
+#include<iostream> 
+#include<math.h> 
+#include<fstream> 
+#include <stdlib.h> 
+using namespace std; 
+int remainder(int x, int y) 
+{ int k; 
+ if (x<y) 
+{ k = x; 
+ x = y; 
+ y = k; } 
+if (x%y == 0) 
+return abs(y); 
+else 
+return remainder(y, x%y); } 
+void main() 
+{ 
+char zzz; 
+const char filepath[] = "C:\\CoutputFiles\\FileProject1.txt"; 
+const char ErrorMessage[] = "Can't open file"; 
+fstream OutStream(filepath, ios::out); 
+if (OutStream.fail()) 
+{ 
+cerr << ErrorMessage << filepath; 
+cin >> zzz; 
+exit(-1); } 
+int x, y, z, t; 
+cout << "Please input the first number" << endl; 
+cin >> x; 
+cout << " Please input the second number" << endl; 
+cin >> y; 
+z = remainder(x, y); 
+t = (x*y) / z; 
+OutStream << x << "and" << y << "'s lcm is" << t << endl; 
+OutStream << x << "and" << y << "'s gcd is" << z << endl; 
+cout << "\n Information have been written to your file" << "\n\n"; 
+cout << "Press any keyboard to return"; 
+cin >> zzz; 
+return; }
+Enter file contents here
